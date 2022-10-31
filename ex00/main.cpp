@@ -2,16 +2,6 @@
 #include "colors.hpp"
 
 
-// template <typename T>
-// void print(T container_element) {
-// 	std::cout << 
-// }
-
-
-
-
-
-
 int main () {
 	std::cout << COLOR_ON_MAGENTA << "--VECTOR--VECTOR--VECTOR--" << END << std::endl;
 	std::cout << COLOR_BOLD_YELLOW << std::string(20, '*')
@@ -56,11 +46,85 @@ int main () {
               << " [TEST TO FILL THE DEQUE AND TRY TO FIND 1ST OCCURRENCE] " << std::string(20, '*') << END
               << std::endl;
 	delimiter
-	std::deque<int> deq(7, 42);
+	std::deque<int> deq(0, 40);
+	deq.push_back(10);
+	deq.push_back(15);
+	deq.push_front(20);
+	deq.push_front(25);
+	deq.push_front(30);
 	std::deque<int>::iterator iter;
 	std::cout << COLOR_BOLD_CYAN << COLOR_UNDERLINE << "PRINTING [deq] DEQUE" << END << std::endl;
-	for (std::vector<int>::size_type i = 0; i < deq.size(); i++) {
+	for (std::deque<int>::size_type i = 0; i < deq.size(); i++) {
 		std::cout << COLOR_BOLD_BLACK << "[deq] | ELEMENT INDEX [" << i << "] : " << END << COLOR_BOLD_GREEN << deq[i] << " " << END << std::endl;
+	}
+	delimiter
+	std::cout << COLOR_BOLD_CYAN << COLOR_UNDERLINE << "ATTEMPT TO FIND ELEMENT [42] IN DEQUE" << END << std::endl;
+	try {
+		iter = easyfind(deq, 19);
+		std::cout << COLOR_ON_GREEN << "SUCCESSFULLY FOUND" << END << std::endl;
+	}
+	catch (std::exception &error) {
+		std::cout << COLOR_BOLD_RED << COLOR_STRIKETHROUGH << error.what() << std::endl;
+	}
+	delimiter
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~TEST 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+		std::cout << COLOR_ON_MAGENTA << "--LIST--LIST--LIST--" << END << std::endl;
+	std::cout << COLOR_BOLD_YELLOW << std::string(20, '*')
+              << " [TEST TO FILL THE LIST AND TRY TO FIND 1ST OCCURRENCE] " << std::string(20, '*') << END
+              << std::endl;
+	delimiter
+	std::list<int> lst(0, 40);
+	lst.push_back(10);
+	lst.push_back(15);
+	lst.push_front(20);
+	lst.push_front(25);
+	lst.push_front(30);
+	std::list<int>::iterator iterat_r;
+	std::cout << COLOR_BOLD_CYAN << COLOR_UNDERLINE << "PRINTING [lst] LIST" << END << std::endl;
+	for (std::list<int>::size_type i = 0; i < lst.size(); i++) {
+		std::cout << COLOR_BOLD_BLACK << "[lst] | ELEMENT INDEX [" << i << "] : " << END << COLOR_BOLD_GREEN << deq[i] << " " << END << std::endl;
+	}
+	delimiter
+	std::cout << COLOR_BOLD_CYAN << COLOR_UNDERLINE << "ATTEMPT TO FIND ELEMENT [10] IN LIST" << END << std::endl;
+	j = 0;
+	try {
+		iterat_r = easyfind(lst, 10);
+		for (std::list<int>::iterator i = lst.begin(); i != iterat_r; i++) {
+			j++;
+	}
+		std::cout << COLOR_ON_GREEN << "SUCCESSFULLY FOUND" << END << std::endl;
+		std::cout << COLOR_BOLD_GREEN << "ELEMENT [10] WAS FOUND SUCCESSFULY AT INDEX : [" << j << "]" << END << std::endl;
+	}
+	catch (std::exception &error) {
+		std::cout << COLOR_BOLD_RED << COLOR_STRIKETHROUGH << error.what() << std::endl;
+	}
+	delimiter
+	j = 0;
+	std::cout << COLOR_BOLD_CYAN << COLOR_UNDERLINE << "ATTEMPT TO FIND ELEMENT [20] IN LIST" << END << std::endl;
+	try {
+		iterat_r = easyfind(lst, 20);
+		for (std::list<int>::iterator i = lst.begin(); i != iterat_r; i++) {
+			j++;
+	}
+		std::cout << COLOR_ON_GREEN << "SUCCESSFULLY FOUND" << END << std::endl;
+		std::cout << COLOR_BOLD_GREEN << "ELEMENT [20] WAS FOUND SUCCESSFULY AT INDEX : [" << j << "]" << END << std::endl;
+	}
+	catch (std::exception &error) {
+		std::cout << COLOR_BOLD_RED << COLOR_STRIKETHROUGH << error.what() << std::endl;
+	}
+	delimiter
+	j = 0;
+	std::cout << COLOR_BOLD_CYAN << COLOR_UNDERLINE << "ATTEMPT TO FIND NON_EXISTING ELEMENT [19] IN LIST" << END << std::endl;
+	try {
+		iterat_r = easyfind(lst, 19);
+		for (std::list<int>::iterator i = lst.begin(); i != iterat_r; i++) {
+			j++;
+	}
+		std::cout << COLOR_ON_GREEN << "SUCCESSFULLY FOUND" << END << std::endl;
+		std::cout << COLOR_BOLD_GREEN << "ELEMENT [19] WAS FOUND SUCCESSFULY AT INDEX : [" << j << "]" << END << std::endl;
+	}
+	catch (std::exception &error) {
+		std::cout << COLOR_BOLD_RED << COLOR_STRIKETHROUGH << error.what() << std::endl;
 	}
 	delimiter
 }
