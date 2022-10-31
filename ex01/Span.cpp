@@ -12,7 +12,7 @@ Span::Span(unsigned int param_N) : _N(0), _max_N(param_N) {
 
 //----------------------Copy Constructor----------------------//
 Span::Span(const Span &src) {
-	*this = src;
+    *this = src;
     std::cout << "[Span] Copy constructor was called" << std::endl;
 }
 
@@ -21,7 +21,7 @@ Span &Span::operator=(const Span &src) {
     if (this != &src) {
         this->_vector = src._vector;
         this->_N = src._N;
-		this->_max_N = src._max_N; 
+        this->_max_N = src._max_N;
     }
     std::cout << "[Span] Copy Assignment was called" << std::endl;
     return (*this);
@@ -34,9 +34,8 @@ Span::~Span() { std::cout << "[Span] Destructor was called" << std::endl; }
 void Span::addNumber(int nb) {
     if (this->_N < this->_max_N) {
         this->_vector.push_back(nb);
-	    this->_N++;
-    }
-    else
+        this->_N++;
+    } else
         throw Span::FillingSpanException();
 }
 
@@ -55,11 +54,10 @@ int Span::shortestSpan() {
 }
 
 int Span::longestSpan() {
-    if (this->_vector.size() <= 1)
-        throw Span::MinimumNotFoundException();
+    if (this->_vector.size() <= 1) throw Span::MinimumNotFoundException();
     int min = *std::min_element(this->_vector.begin(), this->_vector.end());
     int max = *std::max_element(this->_vector.begin(), this->_vector.end());
-    // std::cout << "min : " << min << "\t max : " << max << std::endl; 
+    // std::cout << "min : " << min << "\t max : " << max << std::endl;
     return (static_cast<int>(max - min));
 }
 
@@ -79,5 +77,6 @@ int Span::getContent(int idx) { return (this->_vector[idx]); }
 
 //----------------------Insertion to vector----------------------//
 void Span::insertToVector(std::vector<int> elem_to_insert) {
-    this->_vector.insert(this->_vector.end(), elem_to_insert.begin(), elem_to_insert.end());
+    this->_vector.insert(this->_vector.end(), elem_to_insert.begin(),
+                         elem_to_insert.end());
 }

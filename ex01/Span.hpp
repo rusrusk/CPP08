@@ -1,16 +1,14 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <algorithm>
+#include <climits>
 #include <iostream>
 #include <vector>
-#include <climits>
-#include <algorithm>
-
 #include "colors.hpp"
 
 class Span {
    private:
-    //[size] that stores a max of integers elements
     int _N;
     int _max_N;
     std::vector<int> _vector;
